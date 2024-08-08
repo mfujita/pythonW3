@@ -86,4 +86,4 @@ print('np.dsplit(array5,3)')
 print(newArray5)
 '''
 
-# Concluo que as operações array_split, hsplit e vsplit recebem como parãmetro um array e um número qeu determina em quantos arrays serão divididos.
+# Concluo que as operações array_split, hsplit e vsplit recebem como parãmetro um array e um número que determina em quantos arrays serão divididos.
