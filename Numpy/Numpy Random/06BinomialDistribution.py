@@ -6,7 +6,7 @@
 # size: o shape do array retornado (a quantidade de número de elementos em cada dimensão)
 # Distribuição discreta → definida em conjutos separados de eventos. Por exemplo, "cara ou coroa" é um resultado discreto.
 
-# Dado 10 tentaivas para cara ou coroa, gere 10 pontos
+# Dado 10 tentativas para cara ou coroa, gere 10 pontos
 from numpy import random
 print('random.binomial(n=10, p=0.5, size=10)')
 array1= random.binomial(n=10, p=0.5, size=10)
