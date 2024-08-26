@@ -31,16 +31,15 @@ print(constants.atto)     #1e-18
 print(constants.zepto)    #1e-21
 
 # ângulos
-print('âgulos')
-print('1 radiano',constants.pi/180)
+print('Ângulos. 1 radiano: pi/180',constants.pi/180)
 print(constants.degree)     #0.017453292519943295
 print(constants.arcmin)     #0.0002908882086657216
 print(constants.arcminute)  #0.0002908882086657216
 print(constants.arcsec)     #4.84813681109536e-06
 print(constants.arcsecond)  #4.84813681109536e-06
 
-# Time
-print('Unidade básica: 1 segundo')
+# Tempo
+print('Tempo. Unidade básica: 1 segundo')
 print(constants.minute)      #60.0
 print(constants.hour)        #3600.0
 print(constants.day)         #86400.0
@@ -49,7 +48,7 @@ print(constants.year)        #31536000.0
 print(constants.Julian_year) #31557600.0
 
 # Comprimento
-print('unidade básica: 1 metro')
+print('Comprimento. Unidade básica: 1 metro')
 print(constants.inch)              #0.0254
 print(constants.foot)              #0.30479999999999996
 print(constants.yard)              #0.9143999999999999
@@ -69,7 +68,7 @@ print(constants.light_year)        #9460730472580800.0
 print(constants.parsec)            #3.0856775813057292e+16
 
 # Pressão
-print('Unidade básica: 1 Pa')
+print('Pressão. Unidade básica: 1 Pa')
 print(constants.atm)         #101325.0
 print(constants.atmosphere)  #101325.0
 print(constants.bar)         #100000.0
@@ -78,14 +77,12 @@ print(constants.mmHg)        #133.32236842105263
 print(constants.psi)         #6894.757293168361
 
 # Área
-print('Área')
-print('Unidade básica: 1 m²')
+print('Área. Unidade básica: 1 m²')
 print(constants.hectare) #10000.0
 print(constants.acre)    #4046.8564223999992
 
 # Volume
-print('Volume')
-print('Unidade básica: 1 m³')
+print('Volume. Unidade básica: 1 m³')
 print(constants.liter)            #0.001
 print(constants.litre)            #0.001
 print(constants.gallon)           #0.0037854117839999997
@@ -98,22 +95,20 @@ print(constants.barrel)           #0.15898729492799998
 print(constants.bbl)              #0.15898729492799998
 
 # Velocidade
-print('Velocidade')
-print('Unidade básica: 1 /ms')
+print('Velocidade. Unidade básica: 1 /ms')
 print(constants.kmh)            #0.2777777777777778
 print(constants.mph)            #0.44703999999999994
 print(constants.mach)           #340.5
 print(constants.speed_of_sound) #340.5
 print(constants.knot)           #0.5144444444444445
 
-# Temperature
-print('Unidade básica: 1 K')
+# Temperatura
+print('Temperatura. Unidade básica: 1 K')
 print(constants.zero_Celsius)      #273.15
 print(constants.degree_Fahrenheit) #0.5555555555555556
 
 # Energia
-print('Energia')
-print('Unidade básica: 1 J')
+print('Energia. Unidade básica: 1 J')
 print(constants.eV)            #1.6021766208e-19
 print(constants.electron_volt) #1.6021766208e-19
 print(constants.calorie)       #4.184
@@ -126,17 +121,19 @@ print(constants.Btu_th)        #1054.3502644888888
 print(constants.ton_TNT)       #4184000000.0
 
 # Potência
-print('Potência')
-print('Unidade básica: 1 W')
+print('Potência. Unidade básica: 1 W')
 print(constants.hp)         #745.6998715822701
 print(constants.horsepower) #745.6998715822701
 
 # Força
-print('Força')
-print('Unidade básica: 1 N')
+print('Força. Unidade básica: 1 N')
 print(constants.dyn)             #1e-05
 print(constants.dyne)            #1e-05
 print(constants.lbf)             #4.4482216152605
 print(constants.pound_force)     #4.4482216152605
 print(constants.kgf)             #9.80665
 print(constants.kilogram_force)  #9.80665
+
+print('Núemro de Adogradro.', constants.Avogadro)
+print('troy_pound', constants.troy_pound)
+print('pound → kilograma', constants.pound)
