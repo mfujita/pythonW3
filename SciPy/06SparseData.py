@@ -2,7 +2,7 @@
 # What is Sparse Data
 # Sparse Data é um conjunto de dados que apresenta uma grande quantidade de valores ausentes ou nulos. Exemplo de uma array esparso:
 # [1, 0, 2, 0 , 0, 3, 0, 0, 0, 0, 0]
-# na comutação científica quando lida-se com derivadas parciais em álgebra linear depara-se com dados esparsos.
+# Na computação científica quando lida-se com derivadas parciais em álgebra linear depara-se com dados esparsos.
 
 # How to Work With Sparse Data
 # SciPy tem um módulo, scipy.sparse que fornece funções para lidar com dados esparsos.
