@@ -17,6 +17,6 @@ print(myList, type(myList))
 
 print()
 print('LIST. Obedece uma ordem, permite mudança de valores e aceita valores duplicados.')
-print('TUPLE. Obedece uma ordem, não aceita mudança de valores e aceita valores duplciados.')
+print('TUPLE. Obedece uma ordem, não aceita mudança de valores e aceita valores duplicados.')
 print('SET. Não obedece uma ordem, não aceita mudança de valores (mas pode adicionar ou remover elementos), não são indexados e não admitem valores duplicados.')
 print('DICTIONARY. Python 3.6- (não obedece ordem). Python 3.7+ (são ordenados). Permitem mudança de valores e não aceitam valores duplicados.')
