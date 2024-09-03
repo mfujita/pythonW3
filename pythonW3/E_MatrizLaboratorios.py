@@ -25,30 +25,37 @@ def imprimeHorariosLaboratorios(matriz):
         print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
 
 def exibeHorarioProfessor():
-    horProf = [] #[['','','','',''],['','','','','']]
+    horProf = [['','','','',''],['','','','','']]
     dia=0
     periodo=0
+    celula=''
     nome='FUJITA' # input('Nome do professor: ')
 
-    for linha in geral:
-        for coluna in linha:
-            if nome not in coluna:
-                horProf.insert(dia, ' ')
-            else:
-                horProf.insert(dia, coluna)
-    print(horProf)
+    for linha in range(len(geral)):
+        for coluna in range(len(linha)):
+            print(f'{geral}[{linha}][{coluna}] ', end=' ')
+        print()
+
+    
+
+        # if nome in geral:
+        #     horProf[dia][0] += geral[coluna]
+        # else:
+        #     horProf[dia][periodo] += ''
+    
 
 
-    # horProf[0][0] = 'a'
-    # horProf[0][1] = 'b'
-    # horProf[0][2] = 'c'
-    # horProf[0][3] = 'd'
-    # horProf[0][4] = 'e'
-    # horProf[1][0] = 'f'
-    # horProf[1][1] = 'g'
-    # horProf[1][2] = 'h'
-    # horProf[1][3] = 'i'
-    # horProf[1][4] = 'j'
+    horProf[0][0] = 'a'
+    horProf[0][1] = 'b'
+    horProf[0][2] = 'c'
+    horProf[0][3] = 'd'
+    horProf[0][4] = 'e'
+    horProf[1][0] = 'f'
+    horProf[1][1] = 'g'
+    horProf[1][2] = 'h'
+    horProf[1][3] = 'i'
+    horProf[1][4] = 'j'
+    # print(horProf[0][2])
     # for dia in range(len(horProf)):
     #     for coluna in range(len(horProf)):
     #         print(f"{coluna:<3}", end=' ')
