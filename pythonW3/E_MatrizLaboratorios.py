@@ -1,4 +1,4 @@
-import numpy as np
+import pandas as pd
 
 geral = [
     ["Lab1-DAIVES-Algoritmos-CC", "Lab1-YURI-Multimida-SI", "Lab1-YURI-Imagens-CC", "Lab1-VALMIR-Design", "Lab1-MARCOS ANTÔNIO-EngQui-Proje"],
@@ -19,7 +19,6 @@ geral = [
     ["Lab8-RAUL CESAR-Algoritmos-CC", "Lab8-RAUL CESAR-Logica-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-SANTACLARA-Banco-SI"]
 ]
 
-
 def imprimeHorariosLaboratorios(matriz):
     for i in range(len(matriz)):
         print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
@@ -31,10 +30,10 @@ def exibeHorarioProfessor():
     celula=''
     nome='FUJITA' # input('Nome do professor: ')
 
-    for linha in range(len(geral)):
-        for coluna in range(len(linha)):
-            print(f'{geral}[{linha}][{coluna}] ', end=' ')
-        print()
+    # for linha in range(len(geral)):
+    #     for coluna in range(len(linha)):
+    #         print(f'{geral}[{linha}][{coluna}] ', end=' ')
+    #     print()
 
     
 
@@ -63,4 +62,35 @@ def exibeHorarioProfessor():
     # return horProf
 
 # imprimeHorariosLaboratorios(geral)
-mat = exibeHorarioProfessor()
+# mat = exibeHorarioProfessor()
+
+def readJSON():
+    geral = {
+        "segunda": {
+             'lab': 'Lab1', 'nome':'DAIVES',         'disciplina':'Algoritmos',      'horario':'19:00 às 22:10'],
+            [ 'lab': 'Lab2', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'19:00 às 20:30'],
+            [ 'lab': 'Lab3', 'nome':'DANIEL',         'disciplina':'Arquitetura',     'horario':'19:00 às 22:10'],
+            [ 'lab': 'Lab4', 'nome':'ROSEMARY',       'disciplina':'Projeto Digital', 'horario':'19:00 às 20:30'],
+            [ 'lab': 'Lab4', 'nome':'Mariana Costa',  'disciplina':'Engov',           'horario':'19:00 às 20:30'],
+            [ 'lab': 'Lab5', 'nome':'VALMIR',         'disciplina':'Design',          'horario':'19:00 às 20:30'],
+            [ 'lab': 'Lab5', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'20:50 às 22:10'],
+            [ 'lab': 'Lab6', 'nome':'Sebastiao',      'disciplina':'Sistemas',        'horario':'19:00 às 22:10'],
+            [ 'lab': 'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC',              'horario':'19:00 às 22:10'],
+            [ 'lab': 'Lab8', 'nome':'RAUL CESAR',     'disciplina':'Algoritmos',      'horario':'19:00 às 22:10']
+        },
+        "terça": [
+            [ 'lab':'Lab1', 'nome':'DAIVES        ', 'disciplina':'Algoritmos     ' ],
+            [ 'lab':'Lab2', 'nome':'Sinclair      ', 'disciplina':'Design         ' ],
+            [ 'lab':'Lab3', 'nome':'DANIEL        ', 'disciplina':'Arquitetura    ' ],
+            [ 'lab':'Lab4', 'nome':'ROSEMARY      ', 'disciplina':'Projeto Digital' ],
+            [ 'lab':'Lab5', 'nome':'VALMIR        ', 'disciplina':'Design         ' ],
+            [ 'lab':'Lab6', 'nome':'Sebastiao     ', 'disciplina':'Sistemas       ' ],
+            [ 'lab':'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC             ' ],
+            [ 'lab':'Lab8', 'nome':'RAUL CESAR    ', 'disciplina':'Algoritmos     ' ]
+        ]
+}
+    
+    df = pd.DataFrame(geral)
+    print(df['segunda'])
+
+readJSON()
