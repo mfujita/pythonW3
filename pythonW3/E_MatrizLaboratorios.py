@@ -24,7 +24,7 @@ def imprimeHorariosLaboratorios(matriz):
         print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
 
 def exibeHorarioProfessor():
-    horProf = [['','','','',''],['','','','','']]
+    horProf = [] # [['','','','',''],['','','','','']]
     dia=0
     periodo=0
     celula=''
@@ -35,62 +35,58 @@ def exibeHorarioProfessor():
     #         print(f'{geral}[{linha}][{coluna}] ', end=' ')
     #     print()
 
-    
-
-        # if nome in geral:
-        #     horProf[dia][0] += geral[coluna]
-        # else:
-        #     horProf[dia][periodo] += ''
-    
-
-
-    horProf[0][0] = 'a'
-    horProf[0][1] = 'b'
-    horProf[0][2] = 'c'
-    horProf[0][3] = 'd'
-    horProf[0][4] = 'e'
-    horProf[1][0] = 'f'
-    horProf[1][1] = 'g'
-    horProf[1][2] = 'h'
-    horProf[1][3] = 'i'
-    horProf[1][4] = 'j'
+    # horProf[0][0] = 'a'
+    # horProf[0][1] = 'b'
+    # horProf[0][2] = 'c'
+    # horProf[0][3] = 'd'
+    # horProf[0][4] = 'e'
+    # horProf[1][0] = 'f'
+    # horProf[1][1] = 'g'
+    # horProf[1][2] = 'h'
+    # horProf[1][3] = 'i'
+    # horProf[1][4] = 'j'
     # print(horProf[0][2])
-    # for dia in range(len(horProf)):
-    #     for coluna in range(len(horProf)):
-    #         print(f"{coluna:<3}", end=' ')
-    #     print()
-    # return horProf
+    for dia in range(len(horProf)):
+        for coluna in range(len(horProf)):
+            if nome in geral:
+                horProf[dia][periodo] += geral[coluna]
+            else:
+                horProf[dia][periodo] += ''
+        #     print(f"{coluna:<3}", end=' ')
+        # print()
+    print(horProf)
 
 # imprimeHorariosLaboratorios(geral)
+exibeHorarioProfessor()
 # mat = exibeHorarioProfessor()
 
-def readJSON():
-    geral = {
-        "segunda": {
-             'lab': 'Lab1', 'nome':'DAIVES',         'disciplina':'Algoritmos',      'horario':'19:00 às 22:10'],
-            [ 'lab': 'Lab2', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'19:00 às 20:30'],
-            [ 'lab': 'Lab3', 'nome':'DANIEL',         'disciplina':'Arquitetura',     'horario':'19:00 às 22:10'],
-            [ 'lab': 'Lab4', 'nome':'ROSEMARY',       'disciplina':'Projeto Digital', 'horario':'19:00 às 20:30'],
-            [ 'lab': 'Lab4', 'nome':'Mariana Costa',  'disciplina':'Engov',           'horario':'19:00 às 20:30'],
-            [ 'lab': 'Lab5', 'nome':'VALMIR',         'disciplina':'Design',          'horario':'19:00 às 20:30'],
-            [ 'lab': 'Lab5', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'20:50 às 22:10'],
-            [ 'lab': 'Lab6', 'nome':'Sebastiao',      'disciplina':'Sistemas',        'horario':'19:00 às 22:10'],
-            [ 'lab': 'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC',              'horario':'19:00 às 22:10'],
-            [ 'lab': 'Lab8', 'nome':'RAUL CESAR',     'disciplina':'Algoritmos',      'horario':'19:00 às 22:10']
-        },
-        "terça": [
-            [ 'lab':'Lab1', 'nome':'DAIVES        ', 'disciplina':'Algoritmos     ' ],
-            [ 'lab':'Lab2', 'nome':'Sinclair      ', 'disciplina':'Design         ' ],
-            [ 'lab':'Lab3', 'nome':'DANIEL        ', 'disciplina':'Arquitetura    ' ],
-            [ 'lab':'Lab4', 'nome':'ROSEMARY      ', 'disciplina':'Projeto Digital' ],
-            [ 'lab':'Lab5', 'nome':'VALMIR        ', 'disciplina':'Design         ' ],
-            [ 'lab':'Lab6', 'nome':'Sebastiao     ', 'disciplina':'Sistemas       ' ],
-            [ 'lab':'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC             ' ],
-            [ 'lab':'Lab8', 'nome':'RAUL CESAR    ', 'disciplina':'Algoritmos     ' ]
-        ]
-}
+# def readJSON():
+#     geral = {
+#         "segunda": {
+#              'lab': 'Lab1', 'nome':'DAIVES',         'disciplina':'Algoritmos',      'horario':'19:00 às 22:10'],
+#             [ 'lab': 'Lab2', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'19:00 às 20:30'],
+#             [ 'lab': 'Lab3', 'nome':'DANIEL',         'disciplina':'Arquitetura',     'horario':'19:00 às 22:10'],
+#             [ 'lab': 'Lab4', 'nome':'ROSEMARY',       'disciplina':'Projeto Digital', 'horario':'19:00 às 20:30'],
+#             [ 'lab': 'Lab4', 'nome':'Mariana Costa',  'disciplina':'Engov',           'horario':'19:00 às 20:30'],
+#             [ 'lab': 'Lab5', 'nome':'VALMIR',         'disciplina':'Design',          'horario':'19:00 às 20:30'],
+#             [ 'lab': 'Lab5', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'20:50 às 22:10'],
+#             [ 'lab': 'Lab6', 'nome':'Sebastiao',      'disciplina':'Sistemas',        'horario':'19:00 às 22:10'],
+#             [ 'lab': 'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC',              'horario':'19:00 às 22:10'],
+#             [ 'lab': 'Lab8', 'nome':'RAUL CESAR',     'disciplina':'Algoritmos',      'horario':'19:00 às 22:10']
+#         },
+#         "terça": [
+#             [ 'lab':'Lab1', 'nome':'DAIVES        ', 'disciplina':'Algoritmos     ' ],
+#             [ 'lab':'Lab2', 'nome':'Sinclair      ', 'disciplina':'Design         ' ],
+#             [ 'lab':'Lab3', 'nome':'DANIEL        ', 'disciplina':'Arquitetura    ' ],
+#             [ 'lab':'Lab4', 'nome':'ROSEMARY      ', 'disciplina':'Projeto Digital' ],
+#             [ 'lab':'Lab5', 'nome':'VALMIR        ', 'disciplina':'Design         ' ],
+#             [ 'lab':'Lab6', 'nome':'Sebastiao     ', 'disciplina':'Sistemas       ' ],
+#             [ 'lab':'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC             ' ],
+#             [ 'lab':'Lab8', 'nome':'RAUL CESAR    ', 'disciplina':'Algoritmos     ' ]
+#         ]
+# }
     
-    df = pd.DataFrame(geral)
-    print(df['segunda'])
+#     df = pd.DataFrame(geral)
+#     print(df['segunda'])
 
-readJSON()
+# readJSON()
