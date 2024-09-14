@@ -1,63 +1,71 @@
 import pandas as pd
 
 geral = [
-    ["Lab1-DAIVES-Algoritmos-CC", "Lab1-YURI-Multimida-SI", "Lab1-YURI-Imagens-CC", "Lab1-VALMIR-Design", "Lab1-MARCOS ANTÔNIO-EngQui-Proje"],
-    ["Lab1-DAIVES-Algoritmos-CC", "Lab1-YURI-Logica-SI", "Lab1-YURI-Imagens-CC", "Lab1-Jose Ribeiro-Contabeis", ""],
-    ["Lab2-SINCLAIR-Design", "Lab2-DANIEL-Arquitetura-CC", "Lab2-SAMARA-Simulação-Eng", "Lab2-DANIEL-Estrutura-CC", "Lab2-LAURA MARIA-TCC-EngPr"],
-    ["", "Lab2-DANIEL-Arquitetura-CC", "", "Lab2-DANIEL-Estrutura-CC", "Lab2-LAURA MARIA-TCC-EngPr"],
-    ["Lab3-DANIEL-Arquitetura-CC", "Lab3-FABIO-Estatística-EngCV", "Lab3-FABIO-Estatística-EngPr", "Lab3-FABIO-Algebra-EngMc", "Lab3-Mariana Costa-EngOv"],
-    ["Lab3-DANIEL-Arquitetura-CC", "Lab3-FABIO-Estatistica-EngCV", "Lab3-FABIO-Estatística-EngPr", "Lab3-FABIO-Estatística-EngMc", "Lab3-Mariana Costa-EngOv"],
-    ["Lab4-ROSEMARY-Projeto Digital-Engev", "Lab4-SEBASTIÃO-Sistemas-CC", "Lab4-LUCAS SERAFIM-Sistemas-CC", "Lab4-ROSEMARY-Projeto Digital-Engel", "Lab4-LUCAS SERAFIM-Sistemas-CC"],
-    ["Lab4-Mariana Costa-Engov-Topicos", "Lab4-SEBASTIÃO-Sistemas-CC", "Lab4-LUCAS SERAFIM-Sistemas-CC", "Lab4-ROSEMARY-Projeto Digital-Engmec", "Lab4-LUCAS SERAFIM-Sistemas-CC"],
-    ["Lab5-VALMIR-Design", "Lab5-SINCLAIR-Design", "Lab5-VALMIR-Design", "Lab5-SINCLAIR-Design", "Lab5-Laisa Lemes-Design"],
-    ["Lab5-SINCLAIR-Design", "Lab5-SINCLAIR-Design", "Lab5-VALMIR-Design", "Lab5-SINCLAIR-Design", "Lab5-Laisa Lemes-Design"],
-    ["Lab6-SEBASTIÃO-Sistemas-CC", "Lab6-VALMIR-Design", "Lab6-SANTACLARA-Algoritmos-CC", "Lab6-Paulo César-Estr Dados-SI", "Lab6-SEBASTIÃO-Sistemas-CC"],
-    ["Lab6-SEBASTIÃO-Sistemas-CC", "Lab6-VALMIR-Design", "Lab6-SANTACLARA-Algoritmos-CC", "Lab6-Paulo César-Estr Dados-SI", "Lab6-SEBASTIÃO-Sistemas-CC"],
-    ["Lab7-BRUNO HENRIQUE-CC", "Lab7-Marcos Antônio-EngPr", "Lab7-FUJITA-Estrutura de Dados-CC", "Lab7-SANTACLARA-Banco-SI", ""],
-    ["Lab7-BRUNO HENRIQUE-CC", "Lab7-Marcos Antônio-EngPr", "Lab7-FUJITA-Estrutura de Dados-CC", "Lab7-SANTACLARA-Banco-SI", ""],
-    ["Lab8-RAUL CESAR-Algoritmos-CC", "Lab8-FUJITA-Interface-CC", "Lab8-RAUL CESAR-Logica-CC", "Lab8-FUJITA-Arquitetura-SI", "Lab8-SANTACLARA-Banco-SI"],
-    ["Lab8-RAUL CESAR-Algoritmos-CC", "Lab8-RAUL CESAR-Logica-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-SANTACLARA-Banco-SI"]
+    ["Lab1-prof1", "Lab1-prof2", "Lab1-prof2", "Lab1-prof3", "Lab1-prof4"],
+    ["Lab1-prof1", "Lab1-prof2", "Lab1-prof2", "Lab1-prof5", ""],
+    ["Lab2-prof6", "Lab2-prof7", "Lab2-prof8", "Lab2-prof7", "Lab2-prof9"],
+    ["          ", "Lab2-prof7", "          ", "Lab2-prof7", "Lab2-prof9"],
+    ["Lab3-prof7", "Lab3-prof10", "Lab3-prof10", "Lab3-prof10", "Lab3-prof14"],
+    ["Lab3-prof7", "Lab3-prof10", "Lab3-prof10", "Lab3-prof10", "Lab3-prof14"],
+    ["Lab4-prof11", "Lab4-prof12", "Lab4-prof13", "Lab4-prof11", "Lab4-prof13"],
+    ["Lab4-prof14", "Lab4-prof12", "Lab4-prof13", "Lab4-prof11", "Lab4-prof13"],
+    ["Lab5-prof3", "Lab5-prof6", "Lab5-prof3", "Lab5-prof6", "Lab5-prof18"],
+    ["Lab5-prof6", "Lab5-prof6", "Lab5-prof3", "Lab5-prof6", "Lab5-prof18"],
+    ["Lab6-prof12", "Lab6-prof3", "Lab6-prof15", "Lab6-prof20", "Lab6-prof12"],
+    ["Lab6-prof12", "Lab6-prof3", "Lab6-prof15", "Lab6-prof20", "Lab6-prof12"]
 ]
 
 def imprimeHorariosLaboratorios(matriz):
     for i in range(len(matriz)):
-        print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
+        print(f'{matriz[i][0]:<10} {matriz[i][1]:<10} {matriz[i][2]:<10} {matriz[i][3]:<10} {matriz[i][4]:<10}')
 
-def exibeHorarioProfessor():
+def exibeHorarioProfessor(matriz):
     horProf = [] # [['','','','',''],['','','','','']]
-    dia=0
-    periodo=0
-    celula=''
-    nome='FUJITA' # input('Nome do professor: ')
+    aula=0
+    nome='prof12' # input('Nome do professor: ')
+
+    for i in range(len(matriz)):
+        # if i % 2 == 0: aula = 0 
+        # else: aula = 1
+        if nome in matriz[i][0]:
+            # print(f"{matriz[i][0]:<12}")
+            horProf[0] = matriz[i][0]
+        # print(f"{matriz[i][0]:<12} {matriz[i][1]:<12} {matriz[i][2]:<12} {matriz[i][3]:<12} {matriz[i][4]:<12}")
+        # if nome in matriz[i][0]:
+
+        #     horProf[aula][0] = matriz[i][0]
+        # elif nome in matriz[i][1]:
+
+        #     horProf[aula][1] = matriz[i][1]
+        # elif nome in matriz[i][2]:
+
+        #     horProf[aula][2] = matriz[i][2]
+        # elif nome in matriz[i][3]:
+
+        #     horProf[aula][3] = matriz[i][3]
+        # elif nome in matriz[i][4]:
+
+        #     horProf[aula][4] = matriz[i][4]
+
+    print(horProf)
 
     # for linha in range(len(geral)):
     #     for coluna in range(len(linha)):
     #         print(f'{geral}[{linha}][{coluna}] ', end=' ')
     #     print()
 
-    # horProf[0][0] = 'a'
-    # horProf[0][1] = 'b'
-    # horProf[0][2] = 'c'
-    # horProf[0][3] = 'd'
-    # horProf[0][4] = 'e'
-    # horProf[1][0] = 'f'
-    # horProf[1][1] = 'g'
-    # horProf[1][2] = 'h'
-    # horProf[1][3] = 'i'
-    # horProf[1][4] = 'j'
-    # print(horProf[0][2])
-    for dia in range(len(horProf)):
-        for coluna in range(len(horProf)):
-            if nome in geral:
-                horProf[dia][periodo] += geral[coluna]
-            else:
-                horProf[dia][periodo] += ''
-        #     print(f"{coluna:<3}", end=' ')
-        # print()
-    print(horProf)
+    # for dia in range(len(horProf)):
+    #     for coluna in range(len(horProf)):
+    #         if nome in coluna:
+    #             horProf[dia][periodo] += geral[coluna]
+    #         else:
+    #             horProf[dia][periodo] += ''
+    #     #     print(f"{coluna:<3}", end=' ')
+    #     # print()
+    # print(horProf)
 
 # imprimeHorariosLaboratorios(geral)
-exibeHorarioProfessor()
+exibeHorarioProfessor(geral)
 # mat = exibeHorarioProfessor()
 
 # def readJSON():
