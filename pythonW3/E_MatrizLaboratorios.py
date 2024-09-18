@@ -14,14 +14,24 @@ terca=df['terca'].str.contains('Fujita')
 quarta=df['quarta'].str.contains('Fujita')
 quinta=df['quinta'].str.contains('Fujita')
 sexta=df['sexta'].str.contains('Fujita')
+prof = []
 
-print('segunda')
-print(segunda,end=' ')
-print('terca')
-print(terca,end=' ')
-print('quarta')
-print(quarta,end=' ')
-print('quinta')
-print(quinta,end=' ')
-print('sexta')
-print(sexta,end=' ')
+def printList(dia, texto):
+    print(f"{texto:<8}", end=' ')
+    for item in dia:
+        print(f"{item:<3}", end=' ')
+    print()
+
+printList(segunda,"Segunda")
+printList(terca,"Terça")
+printList(quarta,"Quarta")
+printList(quinta,"Quinta")
+printList(sexta,"Sexta")
+
+
+def imprimeHorario(dia):
+    resto = 0
+    for i in horarios:
+        print(i, horarios[i])
+
+imprimeHorario(terca)
