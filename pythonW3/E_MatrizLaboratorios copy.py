@@ -1,5 +1,3 @@
-import pandas as pd
-
 geral = [
     ["Lab1-DAIVES-Algoritmos-CC", "Lab1-YURI-Multimida-SI", "Lab1-YURI-Imagens-CC", "Lab1-VALMIR-Design-", "Lab1-MARCOS ANTÔNIO-EngQui-Proje"],
     ["Lab1-DAIVES-Algoritmos-CC", "Lab1-YURI-Logica-SI", "Lab1-YURI-Imagens-CC", "Lab1-Jose Ribeiro-Contabeis", ""],
@@ -18,68 +16,43 @@ geral = [
     ["Lab8-RAUL CESAR-Algoritmos-CC", "Lab8-FUJITA-Interface-CC", "Lab8-RAUL CESAR-Logica-CC", "Lab8-FUJITA-Arquitetura-SI", "Lab8-SANTACLARA-Banco-SI"],
     ["Lab8-RAUL CESAR-Algoritmos-CC", "Lab8-RAUL CESAR-Logica-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-TAGLIETTA-SO-CC", "Lab8-SANTACLARA-Banco-SI"]
 ]
-horProf = []
+horProf = [['','','','',''],['','','','','']]
 nome="FUJITA"
 
 def imprimeHorariosLaboratorios(matriz):
     for i in range(len(matriz)):
         print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
 
-def preparaDados():
-    for i in range(len(geral)):
-        for j in range(5):
-            if geral[i][j] != "":
-                campo = geral[i][j].split('-')
-                print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}'")
-            else:
-                print(f"'lab': '    ', 'nome': '              ', 'disciplina': '                  '")
+# def preparaDados():
+#     for i in range(len(geral)):
+#         for j in range(5):
+#             if geral[i][j] != "":
+#                 campo = geral[i][j].split('-')
+#                 print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}'")
+#             else:
+#                 print(f"'lab': '    ', 'nome': '              ', 'disciplina': '                  '")
 
-preparaDados()
+# preparaDados()
         
 
-# def exibeHorarioProfessor():
-#     for dia in range(len(geral)):
-#         for coluna in range(5):
-#             if nome in geral[dia][coluna]:
-                # horProf[dia][coluna] = geral[dia][coluna]
-                # print(geral[dia][coluna], end=' ')
-            # else:
-            #     # horProf[dia][coluna] = ""
-            #     print()
+def exibeHorarioProfessor():
+    for lab in range(len(geral)):
+        for diaSemana in range(5):
+            if nome in geral[lab][diaSemana]:
+                if lab % 2 == 0:
+                    horProf[0][diaSemana] = geral[lab][diaSemana]
+                elif lab % 2 == 1:
+                    horProf[1][diaSemana] = geral[lab][diaSemana]
+            else:
+                pass
 
-    # print(horProf)
+    
+    print(f"{'Segunda':<34} {'Terça':<34} {'Quarta':<34} {'Quinta':<34} {'Sexta':<34}")
+    for lab in range(len(horProf)):
+        for diaSemana in range(5):
+            print(f"{horProf[lab][diaSemana]:<34}",end=' ')
+        print()
+
 
 # imprimeHorariosLaboratorios(geral)
-# exibeHorarioProfessor()
-# mat = exibeHorarioProfessor()
-
-# def readJSON():
-#     geral = {
-#         "segunda": {
-#              'lab': 'Lab1', 'nome':'DAIVES',         'disciplina':'Algoritmos',      'horario':'19:00 às 22:10'],
-#             [ 'lab': 'Lab2', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'19:00 às 20:30'],
-#             [ 'lab': 'Lab3', 'nome':'DANIEL',         'disciplina':'Arquitetura',     'horario':'19:00 às 22:10'],
-#             [ 'lab': 'Lab4', 'nome':'ROSEMARY',       'disciplina':'Projeto Digital', 'horario':'19:00 às 20:30'],
-#             [ 'lab': 'Lab4', 'nome':'Mariana Costa',  'disciplina':'Engov',           'horario':'19:00 às 20:30'],
-#             [ 'lab': 'Lab5', 'nome':'VALMIR',         'disciplina':'Design',          'horario':'19:00 às 20:30'],
-#             [ 'lab': 'Lab5', 'nome':'Sinclair',       'disciplina':'Design',          'horario':'20:50 às 22:10'],
-#             [ 'lab': 'Lab6', 'nome':'Sebastiao',      'disciplina':'Sistemas',        'horario':'19:00 às 22:10'],
-#             [ 'lab': 'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC',              'horario':'19:00 às 22:10'],
-#             [ 'lab': 'Lab8', 'nome':'RAUL CESAR',     'disciplina':'Algoritmos',      'horario':'19:00 às 22:10']
-#         },
-#         "terça": [
-#             [ 'lab':'Lab1', 'nome':'DAIVES        ', 'disciplina':'Algoritmos     ' ],
-#             [ 'lab':'Lab2', 'nome':'Sinclair      ', 'disciplina':'Design         ' ],
-#             [ 'lab':'Lab3', 'nome':'DANIEL        ', 'disciplina':'Arquitetura    ' ],
-#             [ 'lab':'Lab4', 'nome':'ROSEMARY      ', 'disciplina':'Projeto Digital' ],
-#             [ 'lab':'Lab5', 'nome':'VALMIR        ', 'disciplina':'Design         ' ],
-#             [ 'lab':'Lab6', 'nome':'Sebastiao     ', 'disciplina':'Sistemas       ' ],
-#             [ 'lab':'Lab7', 'nome':'BRUNO HENRIQUE', 'disciplina':'CC             ' ],
-#             [ 'lab':'Lab8', 'nome':'RAUL CESAR    ', 'disciplina':'Algoritmos     ' ]
-#         ]
-# }
-    
-#     df = pd.DataFrame(geral)
-#     print(df['segunda'])
-
-# readJSON()
+exibeHorarioProfessor()
