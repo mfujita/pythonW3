@@ -23,30 +23,15 @@ def imprimeHorariosLaboratorios(matriz):
     for i in range(len(matriz)):
         print(f'{matriz[i][0]:<35} {matriz[i][1]:<30} {matriz[i][2]:<35} {matriz[i][3]:<36} {matriz[i][4]:<30}')
 
-# def preparaDados():
-#     for i in range(len(geral)):
-#         for j in range(5):
-#             if geral[i][j] != "":
-#                 campo = geral[i][j].split('-')
-#                 print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}'")
-#             else:
-#                 print(f"'lab': '    ', 'nome': '              ', 'disciplina': '                  '")
-
-# preparaDados()
-        
-
 def exibeHorarioProfessor():
     for lab in range(len(geral)):
         for diaSemana in range(5):
             if nome in geral[lab][diaSemana]:
-                if lab % 2 == 0:
-                    horProf[0][diaSemana] = geral[lab][diaSemana]
-                elif lab % 2 == 1:
-                    horProf[1][diaSemana] = geral[lab][diaSemana]
+                aula = 0 if lab % 2 == 0 else 1
+                horProf[aula][diaSemana] = geral[lab][diaSemana]
             else:
                 pass
 
-    
     print(f"{'Segunda':<34} {'Terça':<34} {'Quarta':<34} {'Quinta':<34} {'Sexta':<34}")
     for lab in range(len(horProf)):
         for diaSemana in range(5):

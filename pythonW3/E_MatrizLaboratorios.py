@@ -33,17 +33,14 @@ def preparaDados():
             if geral[i][j] != "":
                 campo = geral[i][j].split('-')
                 if j == 0:
-                    print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'segunda'")
+                    print("{ " + f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'segunda'" + " }")
                 if j == 1:
-                    print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'terça'")
+                    print("{ " + f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'terça'" + " }")
                 if j == 2:
-                    print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'quarta'")
+                    print("{ " + f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'quarta'" + " }")
                 if j == 3:
-                    print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'quinta'")
+                    print("{ " + f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'quinta'" + " }")
                 if j == 4:
-                    print(f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'sexta'")
-            # else:
-            #     print(f"'lab': '    ', 'nome': '              ', 'disciplina': '                  '")
-            
+                    print("{ " + f"'lab': '{campo[0]}', 'nome': '{campo[1]:<14}', 'disciplina': '{campo[2]:<18}', 'dia':'sexta'" + " }")
 
 preparaDados()
