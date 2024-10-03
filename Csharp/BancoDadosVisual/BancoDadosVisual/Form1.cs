@@ -41,7 +41,7 @@ namespace BancoDadosVisual
             {
                 while (reader.Read())
                 {
-                    txt_Saida.Text += reader.GetString(0) + " " + reader.GetInt32(1) + " " + reader.GetInt32(2) + Environment.NewLine;
+                    txt_Saida.Text += reader.GetInt32(2) + " " + reader.GetString(0) + " " + reader.GetInt32(1) + Environment.NewLine;
                 }
             }
             else
@@ -72,6 +72,30 @@ namespace BancoDadosVisual
             cmd.Parameters.AddWithValue("@nota1", txt_nota1.Text);
             int tamanho = cmd.ExecuteNonQuery();
             MessageBox.Show(tamanho + " registros armazenados.");
+            conn.Close();
+        }
+
+        private void btn_Atualizar_Click(object sender, EventArgs e)
+        {
+            string stringConexao = "server=127.0.0.1;uid=root;pwd=1!2@3#4$;database=mydatabase";
+            MySqlConnection conn = new MySqlConnection(stringConexao);
+
+            try
+            {
+                conn.Open();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Erro de conexão");
+            }
+
+            string sql = "UPDATE cadastropessoas SET nome = @nome, nota1 = @nota1 WHERE id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@nome", txt_nome_atualizar.Text);
+            cmd.Parameters.AddWithValue("@nota1", txt_nota_atualizar.Text);
+            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(txt_ID.Text));
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Registro alterado!");
             conn.Close();
         }
     }
