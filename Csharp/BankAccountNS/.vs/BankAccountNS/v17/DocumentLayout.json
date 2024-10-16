@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\github\\Csharp\\BankAccountNS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{183CE755-FEAE-4BA9-B75A-351A8F5E0F57}|BankAccountNS\\BankAccountNS.csproj|c:\\github\\csharp\\bankaccountns\\bankaccountns\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183CE755-FEAE-4BA9-B75A-351A8F5E0F57}|BankAccountNS\\BankAccountNS.csproj|solutionrelative:bankaccountns\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78128C11-8BF6-4B84-90A7-986BC3654948}|BankTests\\BankTests.csproj|c:\\github\\csharp\\bankaccountns\\banktests\\banktests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78128C11-8BF6-4B84-90A7-986BC3654948}|BankTests\\BankTests.csproj|solutionrelative:banktests\\banktests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 265,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BankTests.cs",
+              "DocumentMoniker": "C:\\github\\Csharp\\BankAccountNS\\BankTests\\BankTests.cs",
+              "RelativeDocumentMoniker": "BankTests\\BankTests.cs",
+              "ToolTip": "C:\\github\\Csharp\\BankAccountNS\\BankTests\\BankTests.cs",
+              "RelativeToolTip": "BankTests\\BankTests.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABcAAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T18:08:51.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\github\\Csharp\\BankAccountNS\\BankAccountNS\\Program.cs",
+              "RelativeDocumentMoniker": "BankAccountNS\\Program.cs",
+              "ToolTip": "C:\\github\\Csharp\\BankAccountNS\\BankAccountNS\\Program.cs",
+              "RelativeToolTip": "BankAccountNS\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAIAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T18:02:52.407Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 135,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
