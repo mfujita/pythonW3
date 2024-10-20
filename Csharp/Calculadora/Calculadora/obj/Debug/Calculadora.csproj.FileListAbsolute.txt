@@ -1,0 +1,7 @@
+C:\github\Csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.AssemblyReference.cache
+C:\github\Csharp\Calculadora\Calculadora\obj\Debug\Calculadora.csproj.CoreCompileInputs.cache
+C:\github\Csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe.config
+C:\github\Csharp\Calculadora\Calculadora\bin\Debug\Calculadora.exe
+C:\github\Csharp\Calculadora\Calculadora\bin\Debug\Calculadora.pdb
+C:\github\Csharp\Calculadora\Calculadora\obj\Debug\Calculadora.exe
+C:\github\Csharp\Calculadora\Calculadora\obj\Debug\Calculadora.pdb
