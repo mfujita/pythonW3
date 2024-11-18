@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { font-family: 'Cambria Math', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+        .red { color: red; }
+        img { border: 1px red solid; }
+    </style>
+</head>
+<body>
+    <h1>Atividade da aula de 18/11/2024</h1>
+
+    <h3>Introdução</h3>
+    <p>Esta atividade refere-se a este assunto da ementa da disciplina Sistema De Comunicação De Dados:</p>
+    <p>Serviços da internet. (<b>FTP</b>, E-MAIL, WWW, DOWNLOAD, UPLOAD, TELNET).</p>
+    <p>Como utilizar comandos de FTP (File TRansfer Protocol).</p>
+    <p>Veja esta imagem abaixo ao procurar pelo arquivo <b>ea960.pdf</b>. Perceba o destaque em torno do endereço que não HTTPS como é o comum.</p>
+    <img src="imagens/fig1.jpg" alt="figura1">
+    <p>Ao clicar no endereço, vem a resposta:</p>
+    <img src="imagens/fig2.jpg" alt="figura2">
+    <p>Significa que existe um outro meio para fazer o download do arquivo. É que será visto na sequência.</p>
+    <p>Na barra de pesquisa, digite "cmd" (sem aspas).</p>
+    <img src="imagens/fig3.jpg" alt="figura3">
+    <p>A imagem abaixo mostra o Prompt de Comando indicando o diretório que você se encontra. No exemplo da imagem a seguir, aparece o meu nome de usuário.</p>
+    <img src="imagens/fig4.jpg" alt="figura4">
+    <p><B>Atenção:</B> todo texto a seguir é impresso a medida que os comandos são digitados. As partes com fundo amarelo são os comandos que você digita para que o servidor da Unicamp responda.</p>
+    <p>Você pode mudar para o diretório de sua preferência com o comando "cd" seguido do nome do diretório. No exemplo, eu mudei para "C:\faculdades\eep\2024s2\Sistema De Comunicação De Dados" porque ao concluir o download, o arquivo estará armazenado neste diretório.</p>
+    <pre>C:\Users\Murilo><mark>cd C:\faculdades\eep\2024s2\Sistema De Comunicação De Dados</mark></pre>
+    <pre>C:\faculdades\eep\2024s2\Sistema De Comunicação De Dados><mark>ftp</mark></pre>
+    <pre>ftp> <mark>open ftp.dca.fee.unicamp.br</mark></pre>
+    <pre>Conectado a www-dca.fee.unicamp.br.
+220-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+220-=         Welcome to the FTP server at the DCA-FEEC-UNICAMP         =
+220----------------------------------------------------------------------
+220-=   Department of Computer Engineering and Industrial Automation    =
+220-=               State University of Campinas                        =
+220-=                  www.dca.fee.unicamp.br                           =
+220-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+220-
+220
+200 Always in UTF8 mode.
+Usuário (www-dca.fee.unicamp.br:(none)): anonymous</pre>
+        <p class="red">Digite anonymous para o nome do usuário.</p>
+    <pre>331 Please specify the password.
+Senha:
+230 Login successful.
+ftp></pre>
+        <p class="red">Pode deixar a senha em branco!!</p>
+    <pre>ftp> <mark>ls</mark>
+200 PORT command successful. Consider using PASV.
+150 Here comes the directory listing.
+pub
+welcome.msg
+226 Directory send OK.
+ftp: 21 bytes recebidos em 0.00Segundos 21000.00Kbytes/s.
+ftp> <mark>cd pub</mark></pre>
+    <pre>ftp><mark>cd docs</mark></pre>
+    <pre>ftp><mark>cd ea960</mark></pre>
+    <pre>ftp> <mark>hash</mark>
+        Imprimindo a marca # para Ligado  ftp: (2048 bytes/marca #) .</pre>
+    <pre>ftp> <mark>get ea960.pdf</mark>
+        200 PORT command successful. Consider using PASV.</pre>
+    <pre>150 Opening BINARY mode data connection for ea960.pdf (392329 bytes).
+        ########################################################################
+        ########################################################################
+        ###############################################226 Transfer complete.
+        ftp: 392329 bytes recebidos em 1.19Segundos 330.52Kbytes/s.
+        ftp></pre>
+    <p>Imagem a seguir mostra o arquivo armazenado e pela data e hora mostra que foi feito para a atividade de hoje.</p>
+    <img src="imagens/fig5.jpg" alt="figura5">
+
+    <p>Talvez você possa encontrar arquivos da área de ciências contábeis nos servidores da Unicamp e se o protocolo for o FTP, agora você pode baixar o arquivo desejado.</p>
+
+    <p>O que deve entregue na tarefa do Teams? Ou uma captura de tela como esta abaixo ou o arquivo ea960.pdf. Tanto um como outro provam que você que você interagiu com o servidor FTP da Unicamp.</p>
+    <img src="imagens/fig6.jpg" alt="figura6">
+</body>
+</html>
