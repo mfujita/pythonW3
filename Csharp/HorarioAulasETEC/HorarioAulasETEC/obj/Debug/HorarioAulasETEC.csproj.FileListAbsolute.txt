@@ -1,0 +1,10 @@
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.exe.config
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.exe
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.pdb
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.AssemblyReference.cache
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.Form1.resources
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.Properties.Resources.resources
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.GenerateResource.cache
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.CoreCompileInputs.cache
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.exe
+C:\estudos\csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.pdb
