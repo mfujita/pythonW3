@@ -22,72 +22,77 @@ namespace HorarioAulasETEC
         {
             this.Location = new Point(0, 0);
             this.WindowState = FormWindowState.Maximized;
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel1.Width = this.Width * 95 / 100;
-
-            SetupLayout();
-
-            // Textos dos labels
-            lblDia1.Text = "Segunda";
-            lblDia2.Text = "Terça";
-            lblDia3.Text = "Quarta";
-            lblDia4.Text = "Quinta";
-            lblDia5.Text = "Sexta";
-
-            lblhor1.Text = "Horário";
-            lblhor2.Text = "07:30";
-            lblhor3.Text = "08:20";
-            lblhor4.Text = "09:10";
-            lblhor5.Text = "10:00";
-            lblhor6.Text = "10:20";
-            lblhor7.Text = "11:10";
-            lblhor8.Text = "12:00";
-            lblhor9.Text = "12:50";
-            lblhor10.Text = "13:10";
-            lblhor11.Text = "14:00";
-            lblhor12.Text = "14:50";
-            lblhor13.Text = "15:40";
-            lblhor14.Text = "16:00";
-            lblhor15.Text = "16:50";
-            lblhor16.Text = "17:40";
-            LoadCombobox();
+            SetupPanel();
+            SetupLabels();
         }
 
-        private void SetupLayout()
+        private void SetupPanel()
         {
-            tableLayoutPanel1.Height = this.Height * 80/100;
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
-            {
-                tableLayoutPanel1.RowStyles[i].SizeType = SizeType.Percent;
-                tableLayoutPanel1.RowStyles[i].Height = 6.25F;
-            }
-
-            tableLayoutPanel1.ColumnStyles[0].SizeType = SizeType.Percent;
-            tableLayoutPanel1.ColumnStyles[0].Width = 10F;
-            for (int i = 1; i < tableLayoutPanel1.ColumnCount; i++)
-            {
-                tableLayoutPanel1.ColumnStyles[i].SizeType = SizeType.Percent;
-                tableLayoutPanel1.ColumnStyles[i].Width = 18F;
-            }
+            panel1.Size = new Size(this.Width * 95 / 100, this.Height * 90 / 100);
+            panel1.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - panel1.Width) / 2, (Screen.PrimaryScreen.WorkingArea.Height - panel1.Height) / 2);
+            panel1.Paint += new PaintEventHandler(Panel1_Paint);
         }
 
-        private void LoadCombobox()
+        private void Panel1_Paint(object sender, PaintEventArgs e)
         {
-            for (int i = 1; i < tableLayoutPanel1.RowCount; i++)
+            int largura = panel1.Width;
+            using(Graphics g = e.Graphics)
             {
-                for (int j = 1; j < tableLayoutPanel1.ColumnCount; j++)
+                Pen caneta = new Pen(Color.Black, 2);
+                for (int i = 0; i < 15; i++)
                 {
-                    Control celula = tableLayoutPanel1.GetControlFromPosition(i, j);
-                    if (celula == null)
-                    {
-                        ComboBox combo = new ComboBox();
-                        tableLayoutPanel1.Controls.Add(combo);
-                        combo.DropDownStyle = ComboBoxStyle.DropDownList;
-                        ColumnStyle larguraColuna = tableLayoutPanel1.ColumnStyles[1];
-                        combo.Width = 300;
-                        combo.Items.AddRange(new string[] { "Sist. Embarcados", "Projeto Tecnologia", "PAM 2", "TPA", "TCC", "Prog Web 2", "Desenv. Sistemas", "QTS", "APS", "IP" });
-                    }
+                    Point p1 = new Point(panel1.Left, panel1.Top + i* 50);
+                    Point p2 = new Point(largura - 62, panel1.Top + i* 50);
+                    g.DrawLine(caneta, p1, p2);
                 }
+
+                for (int i = 0; i <= 6; i++)
+                {
+                    Point p1 = new Point(panel1.Left + i * 240, panel1.Top);
+                    Point p2 = new Point(panel1.Left + i * 240, panel1.Bottom-85);
+                    g.DrawLine(caneta, p1, p2);
+                }
+            }
+        }
+
+        private void SetupLabels()
+        {
+            // Textos dos labels
+
+            for (int i = 1; i < 5; i++)
+            {
+                Label label = new Label();
+                label.Location = new Point(panel1.Left + 250 * i + 20, panel1.Top + 10);
+                panel1.Controls.Add(label);
+
+                if (i == 0) { label.Text = "Segunda"; }
+                else if (i == 1) { label.Text = "Terça"; }
+                else if (i == 2) { label.Text = "Quarta"; }
+                else if (i == 3) { label.Text = "Quinta"; }
+                else if (i == 4) { label.Text = "Sexta"; }
+            }
+
+
+            for (int i = 0; i < 14; i++)
+            {
+                Label label = new Label();
+                label.Location = new Point(panel1.Left + 20, panel1.Top + i*50 + 10);
+                panel1.Controls.Add(label);
+
+                if (i == 0) { label.Text = "Horário"; }
+                else if (i == 1) { label.Text = "07:30"; }
+                else if (i == 2) { label.Text = "08:20"; }
+                else if (i == 3) { label.Text = "09:10"; }
+                else if (i == 4) { label.Text = "10:20"; }
+                else if (i == 5) { label.Text = "11:10"; }
+                else if (i == 6) { label.Text = "12:00"; }
+                else if (i == 7) { label.Text = ""; }
+                else if (i == 8) { label.Text = "13:10"; }
+                else if (i == 9) { label.Text = "14:00"; }
+                else if (i == 10) { label.Text = "14:50"; }
+                else if (i == 11) { label.Text = "16:00"; }
+                else if (i == 12) { label.Text = "16:50"; }
+                else if (i == 13) { label.Text = "17:40"; }
             }
         }
     }
