@@ -2,3 +2,13 @@
 *.log
 .vs
 *.swp
+.vs/
+packages/
+bin/
+obj/
+*.user
+*.suo
+*.sdf
+.vspscc
+*.orig
+*.resharper
