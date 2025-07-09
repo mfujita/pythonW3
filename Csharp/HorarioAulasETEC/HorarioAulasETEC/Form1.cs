@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HorarioAulasETEC
 {
@@ -121,7 +122,7 @@ namespace HorarioAulasETEC
                         combo.Location = new Point(53 + i * 240, 30 + j * 50);
                         combo.DropDownStyle = ComboBoxStyle.DropDownList;
                         combo.Tag = "c" + i + "_" + j;
-                        combo.Items.AddRange(new string[] { "", "APS", "DS", "IP", "PAM1", "PAM2", "PTI", "PW2", "QTS", "SE IoT", "TCC", "TPA" });
+                        combo.Items.AddRange(new string[] { "", "APS", "DS", "IPSSI", "PAM1", "PAM2 3D", "PAM2 AMS3", "PTIC", "PW2", "PW3 3C", "PW3 3D", "PW3 AMS3", "QTS", "SE IoT", "TCC", "TPA" });
                         panel1.Controls.Add(combo);
                     }
                 }
@@ -147,6 +148,28 @@ namespace HorarioAulasETEC
             listQuinta = new List<string>();
             listSexta = new List<string>();
 
+            for (int j = 1; j < 13; j++)
+            {
+                listSegunda.Add(GetTextFromComboboxTag("\"c1" + "_" + j + "\""));
+            }
+            for (int j = 1; j < 13; j++)
+            {
+                listTerca.Add(GetTextFromComboboxTag("\"c2" + "_" + j + "\""));
+            }
+            for (int j = 1; j < 13; j++)
+            {
+                listQuarta.Add(GetTextFromComboboxTag("\"c3" + "_" + j + "\""));
+            }
+            for (int j = 1; j < 13; j++)
+            {
+                listQuinta.Add(GetTextFromComboboxTag("\"c4" + "_" + j + "\""));
+            }
+            for (int j = 1; j < 13; j++)
+            {
+                listSexta.Add(GetTextFromComboboxTag("\"c5" + "_" + j + "\""));
+            }
+
+            /*
             listSegunda.Add(GetTextFromComboboxTag("c1_1"));
             listSegunda.Add(GetTextFromComboboxTag("c1_2"));
             listSegunda.Add(GetTextFromComboboxTag("c1_3"));
@@ -216,6 +239,7 @@ namespace HorarioAulasETEC
             listSexta.Add(GetTextFromComboboxTag("c5_11"));
             listSexta.Add(GetTextFromComboboxTag("c5_12"));
             listSexta.Add(GetTextFromComboboxTag("c5_13"));
+            */
         }
 
         private int GetTextSize(List<string> listDay)
@@ -243,17 +267,26 @@ namespace HorarioAulasETEC
                 }
             }
 
-            if (horario.Equals("APS")) { horario = "Análise e Projeto de Sistemas"; }
-            else if (horario.Equals("DS")) { horario = "Desenvolvimento de Sistemas"; }
-            else if (horario.Equals("IP")) { horario = "Internet, Protocolos e Segurança de Sistemas da Informação"; }
-            else if (horario.Equals("PAM1")) { horario = "Programação de Aplicativos Mobile 1"; }
-            else if (horario.Equals("PAM2")) { horario = "Programação de Aplicativos Mobile 2"; }
-            else if (horario.Equals("PTI")) { horario = "Projetos de Tecnologia de Informação e Comunicação"; }
-            else if (horario.Equals("PW2")) { horario = "Programação Web 2"; }
-            else if (horario.Equals("QTS")) { horario = "Qualidade e Teste de Software"; }
-            else if (horario.Equals("SE IoT")) { horario = "Sistemas Embarcados e IoT"; }
-            else if (horario.Equals("TCC")) { horario = "Planejamento e Desenvolvimento do TCC"; }
-            else if (horario.Equals("TPA")) { horario = "Técnicas de Programação e Algoritmos"; }
+            return horario;
+        }
+
+        private string ScheduleForComputer(string horario)
+        { 
+            if (horario.Equals("APS")) { horario = "Análise e Projeto de Sistemas<br>DSVS2"; }
+            else if (horario.Equals("DS")) { horario = "Desenvolvimento de Sistemas<br>DSVS2"; }
+            else if (horario.Equals("IPSSI")) { horario = "Internet, Protocolos e Segurança de Sistemas da Informação<br>DSVS3"; }
+            else if (horario.Equals("PAM1")) { horario = "Programação de Aplicativos Mobile 1<br>"; }
+            else if (horario.Equals("PAM2 3D")) { horario = "Programação de Aplicativos Mobile 2<br>3D"; }
+            else if (horario.Equals("PAM2 AMS3")) { horario = "Programação de Aplicativos Mobile 2<br>AMS3"; }
+            else if (horario.Equals("PTIC")) { horario = "Projetos de Tecnologia de Informação e Comunicação<br>DSM1A"; }
+            else if (horario.Equals("PW2")) { horario = "Programação Web 2<br>DSVS2"; }
+            else if (horario.Equals("PW3 3C")) { horario = "Programação Web 3 <br>3C"; }
+            else if (horario.Equals("PW3 3D")) { horario = "Programação Web 3<br>3D"; }
+            else if (horario.Equals("PW3 AMS3")) { horario = "Programação Web 3<br>AMS3"; }
+            else if (horario.Equals("QTS")) { horario = "Qualidade e Teste de Software<br>DSM3C"; }
+            else if (horario.Equals("SE IoT")) { horario = "Sistemas Embarcados e IoT<br>DSM1A"; }
+            else if (horario.Equals("TCC")) { horario = "Planejamento e Desenvolvimento do TCC<br>DSVS3"; }
+            else if (horario.Equals("TPA")) { horario = "Técnicas de Programação e Algoritmos<br>DSVS1"; }
             return horario;
         }
 
@@ -278,24 +311,44 @@ namespace HorarioAulasETEC
             sw.WriteLine("        body { font-family: Verdana; font-size: 1.2rem; }");
             sw.WriteLine("        table { width: 90%; margin: auto; margin-top: 15px;}");
             sw.WriteLine("        td { text-align: center; padding: 2px;}");
+            sw.WriteLine("        .container { display: grid; grid-template-columns: auto auto auto auto auto auto; width:50%; margin: auto;");
+            sw.WriteLine("        .color1 { border: 1px solid red; padding-top: 2px; padding-left: 8px; padding-bottom: 2px; } ");
+            sw.WriteLine("        .color2 { border: 1px solid blue; padding-top: 2px; padding-left: 8px; padding-bottom: 2px; } ");
             sw.WriteLine("    </style>");
             sw.WriteLine("</head>");
             sw.WriteLine("<body>");
+            sw.WriteLine("<div class=\"container\">");
+            sw.WriteLine("	<div class=\"color1\">Horário</div> <div class=\"color1\">Segunda</div>                                  <div class=\"color1\">Terça</div>                                      <div class=\"color1\">Quarta</div>                        <div class=\"color1\">Quinta</div>                                       <div class=\"color1\">Sexta</div>");
+            sw.WriteLine("	<div class=\"color1\">07:30</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_1") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_1") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_1") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_1") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_1")+"</div>");
+            sw.WriteLine("	<div class=\"color1\">08:20</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_2") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_2") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_2") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_2") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_2")+"</div>");
+            sw.WriteLine("	<div class=\"color1\">09:10</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_3") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_3") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_3") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_3") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_3")+"</div>");
+            sw.WriteLine("	<div class=\"color1\">10:20</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_4") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_4") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_4") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_4") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_4")+"</div>");
+            sw.WriteLine("	<div class=\"color1\">11:10</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_5") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_5") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_5") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_5") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_5")+"</div>");
+            sw.WriteLine("	<div class=\"color1\">12:00</div>   <div class=\"color1\">"+ GetTextFromComboboxTag("c1_6") + "</div>    <div class=\"color1\">"+ GetTextFromComboboxTag("c2_6") + "</div>      <div class=\"color1\">"+GetTextFromComboboxTag("c3_6") +  "</div> <div class=\"color1\">"+GetTextFromComboboxTag("c4_6") +"</div>  <div class=\"color1\">"+GetTextFromComboboxTag("c5_6")+"</div>");
+
+            sw.WriteLine("	<div class=\"color2\">13:10</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_8") + "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_8") + "</div>      <div class=\"color2\">"+GetTextFromComboboxTag("c3_7")  + "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_8") +"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_8")+"</div>");
+            sw.WriteLine("	<div class=\"color2\">14:00</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_9") + "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_9") + "</div>      <div class=\"color2\">"+GetTextFromComboboxTag("c3_8")  + "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_9") +"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_9")+"</div>");
+            sw.WriteLine("	<div class=\"color2\">14:50</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_10")+ "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_10")+ "</div>      <div class=\"color2\">"+GetTextFromComboboxTag("c3_9")  + "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_10") +"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_10")+"</div>");
+            sw.WriteLine("	<div class=\"color2\">16:00</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_11")+ "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_11")+ "</div>      <div class=\"color2\">"+GetTextFromComboboxTag("c3_10") + "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_11")+"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_12")+"</div>");
+            sw.WriteLine("	<div class=\"color2\">16:50</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_12")+ "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_12")+ "</div>      <div class=\"color2\">"+GetTextFromComboboxTag("c3_11") + "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_12")+"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_12")+"</div>");
+            sw.WriteLine("	<div class=\"color2\">17:40</div>   <div class=\"color2\">" + GetTextFromComboboxTag("c1_13")+ "</div>   <div class=\"color2\">"+ GetTextFromComboboxTag("c2_13")+ "</div>      <div class=\"color2\">"+ GetTextFromComboboxTag("c3_12")+ "</div> <div class=\"color2\">"+GetTextFromComboboxTag("c4_13")+"</div>  <div class=\"color2\">"+GetTextFromComboboxTag("c5_13")+"</div>");
+            sw.WriteLine("</div>");
+
             sw.WriteLine("<table border=\"1\">");
             sw.WriteLine("    <tr><th>Horário</th> <th>{0," + sizeMonday + "}</th> <th>{1," + sizeTuesday + "}</th> <th>{2," + sizeWednesday + "}</th> <th>{3," + sizeThursday + "}</th> <th>{4," + sizeFriday +"}</th></tr>", "Segunda", "Terça", "Quarta", "Quinta", "Sexta");
-            sw.WriteLine("    <tr><td>  07:30</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_1"),  GetTextFromComboboxTag("c2_1"),  GetTextFromComboboxTag("c3_1"),  GetTextFromComboboxTag("c4_1"),  GetTextFromComboboxTag("c5_1"));
-            sw.WriteLine("    <tr><td>  08:20</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_2"),  GetTextFromComboboxTag("c2_2"),  GetTextFromComboboxTag("c3_2"),  GetTextFromComboboxTag("c4_2"),  GetTextFromComboboxTag("c5_2"));
-            sw.WriteLine("    <tr><td>  09:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_3"),  GetTextFromComboboxTag("c2_3"),  GetTextFromComboboxTag("c3_3"),  GetTextFromComboboxTag("c4_3"),  GetTextFromComboboxTag("c5_3"));
-            sw.WriteLine("    <tr><td>  10:20</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_4"),  GetTextFromComboboxTag("c2_4"),  GetTextFromComboboxTag("c3_4"),  GetTextFromComboboxTag("c4_4"),  GetTextFromComboboxTag("c5_4"));
-            sw.WriteLine("    <tr><td>  11:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_5"),  GetTextFromComboboxTag("c2_5"),  GetTextFromComboboxTag("c3_5"),  GetTextFromComboboxTag("c4_5"),  GetTextFromComboboxTag("c5_5"));
-            sw.WriteLine("    <tr><td>  12:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_6"),  GetTextFromComboboxTag("c2_6"),  GetTextFromComboboxTag("c3_6"),  GetTextFromComboboxTag("c4_6"),  GetTextFromComboboxTag("c5_6"));
-            sw.WriteLine("    <tr><td colspan=\"6\">Almoço</td></tr>") ;
-            sw.WriteLine("    <tr><td>  13:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_8"),  GetTextFromComboboxTag("c2_8"),  GetTextFromComboboxTag("c3_8"),  GetTextFromComboboxTag("c4_8"),  GetTextFromComboboxTag("c5_8"));
-            sw.WriteLine("    <tr><td>  14:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_9"),  GetTextFromComboboxTag("c2_9"),  GetTextFromComboboxTag("c3_9"),  GetTextFromComboboxTag("c4_9"),  GetTextFromComboboxTag("c5_9"));
-            sw.WriteLine("    <tr><td>  14:50</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_10"), GetTextFromComboboxTag("c2_10"), GetTextFromComboboxTag("c3_10"), GetTextFromComboboxTag("c4_10"), GetTextFromComboboxTag("c5_10"));
-            sw.WriteLine("    <tr><td>  16:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_11"), GetTextFromComboboxTag("c2_11"), GetTextFromComboboxTag("c3_11"), GetTextFromComboboxTag("c4_11"), GetTextFromComboboxTag("c5_11"));
-            sw.WriteLine("    <tr><td>  16:50</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_12"), GetTextFromComboboxTag("c2_12"), GetTextFromComboboxTag("c3_12"), GetTextFromComboboxTag("c4_12"), GetTextFromComboboxTag("c5_12"));
-            sw.WriteLine("    <tr><td>  17:40</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", GetTextFromComboboxTag("c1_13"), GetTextFromComboboxTag("c2_13"), GetTextFromComboboxTag("c3_13"), GetTextFromComboboxTag("c4_13"), GetTextFromComboboxTag("c5_13"));
+            sw.WriteLine("    <tr><td>  07:30</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_1")),  ScheduleForComputer(GetTextFromComboboxTag("c2_1")),  ScheduleForComputer(GetTextFromComboboxTag("c3_1")),  ScheduleForComputer(GetTextFromComboboxTag("c4_1")),  ScheduleForComputer(GetTextFromComboboxTag("c5_1")));
+            sw.WriteLine("    <tr><td>  08:20</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_2")),  ScheduleForComputer(GetTextFromComboboxTag("c2_2")),  ScheduleForComputer(GetTextFromComboboxTag("c3_2")),  ScheduleForComputer(GetTextFromComboboxTag("c4_2")),  ScheduleForComputer(GetTextFromComboboxTag("c5_2")));
+            sw.WriteLine("    <tr><td>  09:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_3")),  ScheduleForComputer(GetTextFromComboboxTag("c2_3")),  ScheduleForComputer(GetTextFromComboboxTag("c3_3")),  ScheduleForComputer(GetTextFromComboboxTag("c4_3")),  ScheduleForComputer(GetTextFromComboboxTag("c5_3")));
+            sw.WriteLine("    <tr><td>  10:20</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_4")),  ScheduleForComputer(GetTextFromComboboxTag("c2_4")),  ScheduleForComputer(GetTextFromComboboxTag("c3_4")),  ScheduleForComputer(GetTextFromComboboxTag("c4_4")),  ScheduleForComputer(GetTextFromComboboxTag("c5_4")));
+            sw.WriteLine("    <tr><td>  11:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_5")),  ScheduleForComputer(GetTextFromComboboxTag("c2_5")),  ScheduleForComputer(GetTextFromComboboxTag("c3_5")),  ScheduleForComputer(GetTextFromComboboxTag("c4_5")),  ScheduleForComputer(GetTextFromComboboxTag("c5_5")));
+            sw.WriteLine("    <tr><td>  12:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_6")),  ScheduleForComputer(GetTextFromComboboxTag("c2_6")),  ScheduleForComputer(GetTextFromComboboxTag("c3_6")),  ScheduleForComputer(GetTextFromComboboxTag("c4_6")),  ScheduleForComputer(GetTextFromComboboxTag("c5_6")));
+            sw.WriteLine("    <tr><td colspan=\"6\">Almoço</td></tr>") ;                                                                                                                                                                                                                                                                                                                                                                                                                                  
+            sw.WriteLine("    <tr><td>  13:10</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_8")),  ScheduleForComputer(GetTextFromComboboxTag("c2_8")),  ScheduleForComputer(GetTextFromComboboxTag("c3_8")),  ScheduleForComputer(GetTextFromComboboxTag("c4_8")),  ScheduleForComputer(GetTextFromComboboxTag("c5_8")));
+            sw.WriteLine("    <tr><td>  14:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_9")),  ScheduleForComputer(GetTextFromComboboxTag("c2_9")),  ScheduleForComputer(GetTextFromComboboxTag("c3_9")),  ScheduleForComputer(GetTextFromComboboxTag("c4_9")),  ScheduleForComputer(GetTextFromComboboxTag("c5_9")));
+            sw.WriteLine("    <tr><td>  14:50</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_10")), ScheduleForComputer(GetTextFromComboboxTag("c2_10")), ScheduleForComputer(GetTextFromComboboxTag("c3_10")), ScheduleForComputer(GetTextFromComboboxTag("c4_10")), ScheduleForComputer(GetTextFromComboboxTag("c5_10")));
+            sw.WriteLine("    <tr><td>  16:00</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_11")), ScheduleForComputer(GetTextFromComboboxTag("c2_11")), ScheduleForComputer(GetTextFromComboboxTag("c3_11")), ScheduleForComputer(GetTextFromComboboxTag("c4_11")), ScheduleForComputer(GetTextFromComboboxTag("c5_11")));
+            sw.WriteLine("    <tr><td>  16:50</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_12")), ScheduleForComputer(GetTextFromComboboxTag("c2_12")), ScheduleForComputer(GetTextFromComboboxTag("c3_12")), ScheduleForComputer(GetTextFromComboboxTag("c4_12")), ScheduleForComputer(GetTextFromComboboxTag("c5_12")));
+            sw.WriteLine("    <tr><td>  17:40</td> <td>{0," + sizeMonday + "}</td> <td>{1," + sizeTuesday + "}</td> <td>{2," + sizeWednesday + "}</td> <td>{3," + sizeThursday + "}</td> <td>{4," + sizeFriday +"}</td></tr>", ScheduleForComputer(GetTextFromComboboxTag("c1_13")), ScheduleForComputer(GetTextFromComboboxTag("c2_13")), ScheduleForComputer(GetTextFromComboboxTag("c3_13")), ScheduleForComputer(GetTextFromComboboxTag("c4_13")), ScheduleForComputer(GetTextFromComboboxTag("c5_13")));
             sw.WriteLine("</table>");
             sw.WriteLine("</body>");
             sw.WriteLine("</html>");
