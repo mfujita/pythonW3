@@ -10,7 +10,6 @@ namespace IntroductionToDelegatesDotNet
     {
         static void Main(string[] args)
         {
-            
             Console.WriteLine("┌────────────────────────────────────┐");
             Console.WriteLine("| Menu de controle das máquinas      |");
             Console.WriteLine("│ 1 - Ligar Extrusora                │");
