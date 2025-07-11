@@ -66,10 +66,14 @@ namespace Backup2025
         {
             foreach (var item in listDirectoriesExternalHd)
             {
-                if (!File.Exists(item))
+                if (!Directory.Exists(item))
                 {
-
-                    //Console.WriteLine("CREATING DIRECTORY " + item);
+                    Console.WriteLine("CREATING DIRECTORY " + item);
+                    Directory.CreateDirectory(item);
+                }
+                else
+                {
+                    Console.WriteLine("Exists " + item);
                 }
             }
         }
@@ -99,13 +103,23 @@ namespace Backup2025
                 {
                     string filenameInBackup = item.Replace(@"C:\faculdades\etec", @"E:\faculdades\etec");
                     if (!File.Exists(filenameInBackup))
-                        Console.WriteLine("    Copia " + item + " => " + filenameInBackup);
+                        Console.WriteLine("    Copied " + item + " => " + filenameInBackup);
+                    else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+                    {
+                        int pos = filenameInBackup.IndexOf('/');
+                        string nome = filenameInBackup.Substring(pos + 1);
+                        Console.WriteLine("Replaced " + nome + " " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
+                    }
                 }
                 else if (item.StartsWith(@"C:\estudos"))
                 {
                     string filenameInBackup = item.Replace(@"C:\estudos", @"E:\estudos");
                     if (!File.Exists(filenameInBackup))
-                        Console.WriteLine("    Copia " + item + " => " + filenameInBackup);
+                        Console.WriteLine("    Copied " + item + " => " + filenameInBackup);
+                    else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+                    {
+                        Console.WriteLine("Replaced " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
+                    }
                 }
             }
         }

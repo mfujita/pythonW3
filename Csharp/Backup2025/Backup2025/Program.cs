@@ -5,16 +5,16 @@ using Backup2025;
 
 List<string> directoryToBackup = new List<string>()
 {
-    //"C:\\estudos",
-    "C:\\faculdades"
+    "C:\\estudos",
+    //"C:\\faculdades"
 };
 
-List<string> excludedDirectories = new List<string>()
-{
-    ".vs",
-    "FileContentIndex",
-    "packages"
-};
+//List<string> excludedDirectories = new List<string>()
+//{
+//    ".vs",
+//    "FileContentIndex",
+//    "packages"
+//};
 
 MyBackup myBackup = new MyBackup(directoryToBackup);
 myBackup.ListingEachDirectory();
@@ -22,4 +22,4 @@ myBackup.CreatePathExternalHd();
 myBackup.CreateDirectoriesExternalHd();
 Console.WriteLine();
 myBackup.ListingEachDirectoryToGetFiles();
-myBackup.DoBackup();
+//myBackup.DoBackup();
