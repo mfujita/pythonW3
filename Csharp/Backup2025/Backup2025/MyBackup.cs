@@ -13,6 +13,7 @@ namespace Backup2025
         private List<string> allFiles;
         private List<string> listFromMain;
         private List<string> listDirectoriesExternalHd;
+        private string letter = "E";
 
         public MyBackup(List<string> lista)
         {
@@ -48,15 +49,15 @@ namespace Backup2025
         {
             foreach (var item in allDirectories)
             {
-                if (item.StartsWith(@"C:\faculdades\etec\"))
+                if (item.StartsWith(@"C:\faculdades\"))
                 {
-                    listDirectoriesExternalHd.Add(item.Replace(@"C:\faculdades\etec", @"E:\faculdades\etec"));
+                    listDirectoriesExternalHd.Add(item.Replace(@"C:\faculdades\", $@"{letter}:\faculdades\"));
                     //Console.WriteLine(item.Replace(@"C:\faculdades\etec", @"E:\faculdades\etec"));
                 }
                 else if (item.StartsWith(@"C:\estudos\"))
                 {
                     //string nameOfSubdirectory = item.Replace(@"C:\estudos", "");
-                    listDirectoriesExternalHd.Add(item.Replace(@"C:\estudos", @"E:\estudos"));
+                    listDirectoriesExternalHd.Add(item.Replace(@"C:\estudos", $@"{letter}:\estudos"));
                     //Console.WriteLine(item.Replace(@"C:\estudos", @"E:\estudos"));
                 }
             }
@@ -99,25 +100,34 @@ namespace Backup2025
         {
             foreach (var item in allFiles)
             {
-                if (item.StartsWith(@"C:\faculdades\etec"))
+                if (item.StartsWith(@"C:\faculdades"))
                 {
-                    string filenameInBackup = item.Replace(@"C:\faculdades\etec", @"E:\faculdades\etec");
+                    string filenameInBackup = item.Replace(@"C:\faculdades", $@"{letter}:\faculdades");
                     if (!File.Exists(filenameInBackup))
-                        Console.WriteLine("    Copied " + item + " => " + filenameInBackup);
+                    {
+                        File.Copy(item, filenameInBackup);
+                        Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
+                    }
+                        
                     else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
                     {
                         int pos = filenameInBackup.IndexOf('/');
                         string nome = filenameInBackup.Substring(pos + 1);
                         Console.WriteLine("Replaced " + nome + " " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
+                        File.Copy(item, filenameInBackup, true);
                     }
                 }
                 else if (item.StartsWith(@"C:\estudos"))
                 {
-                    string filenameInBackup = item.Replace(@"C:\estudos", @"E:\estudos");
+                    string filenameInBackup = item.Replace(@"C:\estudos", $@"{letter}:\estudos");
                     if (!File.Exists(filenameInBackup))
-                        Console.WriteLine("    Copied " + item + " => " + filenameInBackup);
+                    {
+                        File.Copy(item, filenameInBackup);
+                        Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
+                    }                        
                     else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
                     {
+                        File.Copy(item, filenameInBackup, true);
                         Console.WriteLine("Replaced " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
                     }
                 }
