@@ -13,7 +13,7 @@ namespace Backup2025
         private List<string> allFiles;
         private List<string> listFromMain;
         private List<string> listDirectoriesExternalHd;
-        private string letter = "E";
+        private string letter = "D";
 
         public MyBackup(List<string> lista)
         {
@@ -108,8 +108,11 @@ namespace Backup2025
                         File.Copy(item, filenameInBackup);
                         Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
                     }
-                        
-                    else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+
+                    //else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+                    FileInfo arqOrigem = new FileInfo(item);
+                    FileInfo arqDestino = new FileInfo(filenameInBackup);
+                    if (arqOrigem.LastWriteTime > arqDestino.LastWriteTime)
                     {
                         int pos = filenameInBackup.IndexOf('/');
                         string nome = filenameInBackup.Substring(pos + 1);
@@ -124,8 +127,11 @@ namespace Backup2025
                     {
                         File.Copy(item, filenameInBackup);
                         Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
-                    }                        
-                    else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+                    }
+                    //else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
+                    FileInfo arqOrigem = new FileInfo(item);
+                    FileInfo arqDestino = new FileInfo(filenameInBackup);
+                    if (arqOrigem.LastWriteTime > arqDestino.LastWriteTime)
                     {
                         File.Copy(item, filenameInBackup, true);
                         Console.WriteLine("Replaced " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
