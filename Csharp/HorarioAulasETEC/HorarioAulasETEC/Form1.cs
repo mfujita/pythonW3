@@ -21,6 +21,7 @@ namespace HorarioAulasETEC
         List<string> listQuarta;
         List<string> listQuinta;
         List<string> listSexta;
+        int heightCell = 40;
 
         public Form1()
         {
@@ -40,8 +41,8 @@ namespace HorarioAulasETEC
 
         private void SetupPanel()
         {
-            panel1.Size = new Size(this.Width * 95 / 100, this.Height * 85 / 100);
-            panel1.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - panel1.Width) / 2, 20);
+            panel1.Size = new Size(this.Width * 90 / 100, panel1.Top + 14*heightCell); // altura das 14 linhas do grid
+            panel1.Location = new Point(40, 5);
             panel1.Paint += new PaintEventHandler(Panel1_Paint);
         }
 
@@ -51,19 +52,19 @@ namespace HorarioAulasETEC
             using(Graphics g = e.Graphics)
             {
                 Pen caneta = new Pen(Color.Black, 2);
-                for (int i = 0; i < 15; i++)
+                for (int i = 0; i < 15; i++) //linhas horizontais
                 {
-                    Point p1 = new Point(panel1.Left, panel1.Top + i* 50);
-                    Point p2 = new Point(largura - 62, panel1.Top + i* 50);
+                    Point p1 = new Point(panel1.Left, panel1.Top + i* heightCell);
+                    Point p2 = new Point(largura, panel1.Top + i* heightCell);
                     g.DrawLine(caneta, p1, p2);
                 }
 
-                for (int i = 0; i <= 6; i++)
-                {
-                    Point p1 = new Point(panel1.Left + i * 240, panel1.Top);
-                    Point p2 = new Point(panel1.Left + i * 240, panel1.Bottom-40);
-                    g.DrawLine(caneta, p1, p2);
-                }
+                //for (int i = 0; i <= 6; i++) // linhas verticais
+                //{
+                //    Point p1 = new Point(panel1.Left + i * 210, panel1.Top);
+                //    Point p2 = new Point(panel1.Left + i * 210, panel1.Bottom - 40);
+                //    g.DrawLine(caneta, p1, p2);
+                //}
             }
         }
 
@@ -72,7 +73,7 @@ namespace HorarioAulasETEC
             for (int i = 0; i < 5; i++)
             {
                 Label label = new Label();
-                label.Location = new Point(panel1.Left + 250 * (i+1) + 20, panel1.Top + 10);
+                label.Location = new Point(panel1.Left + Screen.PrimaryScreen.WorkingArea.Width/10 * (i+1) + 20, panel1.Top + 10);
                 panel1.Controls.Add(label);
 
                 if (i == 0) { label.Text = "Segunda"; }
@@ -86,7 +87,7 @@ namespace HorarioAulasETEC
             for (int i = 0; i < 14; i++)
             {
                 Label label = new Label();
-                label.Location = new Point(panel1.Left + 20, panel1.Top + i*50 + 10);
+                label.Location = new Point(panel1.Left + 20, panel1.Top + i*heightCell + 10);
                 panel1.Controls.Add(label);
 
                 if (i == 0) { label.Text = "Horário"; }
@@ -108,7 +109,7 @@ namespace HorarioAulasETEC
 
         private void LoadCombobox()
         {
-            int largura = Screen.PrimaryScreen.WorkingArea.Width * 12 / 100;
+            int largura = panel1.Width / 10;  //Screen.PrimaryScreen.WorkingArea.Width * 12 / 100;
             for (int i = 1; i < 6; i++)
             {
                 for (int j = 1; j < 14; j++)
@@ -118,8 +119,8 @@ namespace HorarioAulasETEC
                     else
                     {
                         combo = new ComboBox();
-                        combo.Size = new Size(largura, 50);
-                        combo.Location = new Point(53 + i * 240, 30 + j * 50);
+                        combo.Size = new Size(largura, heightCell * 80 / 100);
+                        combo.Location = new Point(panel1.Left + Screen.PrimaryScreen.WorkingArea.Width / 10 * i + 20, 10 + j * heightCell); //(53 + i * 240, 15 + j * heightCell);
                         combo.DropDownStyle = ComboBoxStyle.DropDownList;
                         combo.Tag = "c" + i + "_" + j;
                         combo.Items.AddRange(new string[] { "", "APS", "DS", "IPSSI", "PAM1", "PAM2 3D", "PAM2 AMS3", "PTIC", "PW2", "PW3 3C", "PW3 3D", "PW3 AMS3", "QTS", "SE IoT", "TCC", "TPA" });
@@ -133,7 +134,7 @@ namespace HorarioAulasETEC
         {
             Button button = new Button();
             button.Size = new Size(200, 40);
-            button.Location = new Point((panel1.Width - button.Width) / 2, 770);
+            button.Location = new Point((panel1.Width - button.Width) / 2, panel1.Bottom + 10);
             button.ForeColor = Color.Blue;
             button.Text = "Gerar horário";
             this.Controls.Add(button);

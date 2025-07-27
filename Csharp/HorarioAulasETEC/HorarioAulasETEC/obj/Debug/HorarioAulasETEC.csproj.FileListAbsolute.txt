@@ -18,3 +18,14 @@ C:\github\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.cs
 C:\github\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.CoreCompileInputs.cache
 C:\github\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.exe
 C:\github\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.pdb
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.exe.config
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.exe
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\bin\Debug\HorarioAulasETEC.pdb
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.AssemblyReference.cache
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.exe.config
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.Form1.resources
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.Properties.Resources.resources
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.GenerateResource.cache
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.csproj.CoreCompileInputs.cache
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.exe
+C:\github\HorariosETEC\Csharp\HorarioAulasETEC\HorarioAulasETEC\obj\Debug\HorarioAulasETEC.pdb
