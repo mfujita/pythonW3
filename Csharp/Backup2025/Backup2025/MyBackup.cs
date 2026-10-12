@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,18 @@ namespace Backup2025
         private List<string> listFromMain;
         private List<string> listDirectoriesExternalHd;
         private string letter = "D";
+
+        public void DefineDriveLetter()
+        {
+            DriveInfo[] drives = DriveInfo.GetDrives();
+            foreach (var item in drives)
+            {
+                if (!item.ToString().Contains("c"))
+                {
+                    letter = item.ToString().Substring(0,1);
+                }
+            }
+        }
 
         public MyBackup(List<string> lista)
         {
@@ -45,20 +59,13 @@ namespace Backup2025
             }
         }
 
-        public void CreatePathExternalHd()
+        public void CreatePathExternalHd(string myDirectory)
         {
             foreach (var item in allDirectories)
             {
-                if (item.StartsWith(@"C:\faculdades\"))
+                if (item.StartsWith(myDirectory))
                 {
-                    listDirectoriesExternalHd.Add(item.Replace(@"C:\faculdades\", $@"{letter}:\faculdades\"));
-                    //Console.WriteLine(item.Replace(@"C:\faculdades\etec", @"E:\faculdades\etec"));
-                }
-                else if (item.StartsWith(@"C:\estudos\"))
-                {
-                    //string nameOfSubdirectory = item.Replace(@"C:\estudos", "");
-                    listDirectoriesExternalHd.Add(item.Replace(@"C:\estudos", $@"{letter}:\estudos"));
-                    //Console.WriteLine(item.Replace(@"C:\estudos", @"E:\estudos"));
+                    listDirectoriesExternalHd.Add(item.Replace(myDirectory, myDirectory.Replace("C:", $@"{letter}:")));
                 }
             }
         }
@@ -71,10 +78,6 @@ namespace Backup2025
                 {
                     Console.WriteLine("CREATING DIRECTORY " + item);
                     Directory.CreateDirectory(item);
-                }
-                else
-                {
-                    Console.WriteLine("Exists " + item);
                 }
             }
         }
@@ -96,20 +99,19 @@ namespace Backup2025
             }
         }
 
-        public void DoBackup()
+        public void DoBackup(string myDirectory)
         {
             foreach (var item in allFiles)
             {
-                if (item.StartsWith(@"C:\faculdades"))
+                if (item.StartsWith(myDirectory))
                 {
-                    string filenameInBackup = item.Replace(@"C:\faculdades", $@"{letter}:\faculdades");
+                    string filenameInBackup = item.Replace(myDirectory, myDirectory.Replace("C:", $@"{letter}:"));
                     if (!File.Exists(filenameInBackup))
                     {
                         File.Copy(item, filenameInBackup);
                         Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
                     }
 
-                    //else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
                     FileInfo arqOrigem = new FileInfo(item);
                     FileInfo arqDestino = new FileInfo(filenameInBackup);
                     if (arqOrigem.LastWriteTime > arqDestino.LastWriteTime)
@@ -120,21 +122,46 @@ namespace Backup2025
                         File.Copy(item, filenameInBackup, true);
                     }
                 }
-                else if (item.StartsWith(@"C:\estudos"))
+            }
+        }
+
+        // Comparar o que existe no backup, mas não no computador para apagar os arquivos do backup que não existem no computador.
+        public void ShowFilesInBackupNotInComputer(string externalHD)
+        {
+            if (externalHD.StartsWith(@"C:\estudos"))
+            {
+                List<string> dir = new List<string> { "batch", "csharp", "dart", "data_science", "dsa", "dsaCodes", "duolingo", "grancursos", "hashtag", "hiragana", "html", "js", "ptic", "python", "qualidade e testes de softwares", "toda a matematica", "w3schoolsDart" };
+                int index = 0;
+                foreach (string dirName in dir)
                 {
-                    string filenameInBackup = item.Replace(@"C:\estudos", $@"{letter}:\estudos");
-                    if (!File.Exists(filenameInBackup))
+                    string fileInBackup = externalHD.Replace("C:", $@"{letter}:");
+                    string[] directories = Directory.GetDirectories(fileInBackup + "\\" + dir[index]);
+                    foreach (var directory in directories)
                     {
-                        File.Copy(item, filenameInBackup);
-                        Console.WriteLine("  Copied " + item + " => " + filenameInBackup);
+                        foreach (var files in Directory.GetFiles(directory))
+                        {
+                            string fileInComputer = files.Replace($@"{letter}:", "C:");
+                            if (!File.Exists(fileInComputer))
+                            {
+                                Console.WriteLine(fileInComputer);
+                            }
+                        }
                     }
-                    //else if (File.GetLastWriteTime(item) > File.GetLastWriteTime(filenameInBackup))
-                    FileInfo arqOrigem = new FileInfo(item);
-                    FileInfo arqDestino = new FileInfo(filenameInBackup);
-                    if (arqOrigem.LastWriteTime > arqDestino.LastWriteTime)
+                    index++;
+                }
+            }
+            else if (externalHD.StartsWith(@"C:\faculdade"))
+            {
+                string[] directories = Directory.GetDirectories(externalHD.Replace("C:", $@"{letter}:"));
+                foreach (var directory in directories)
+                {
+                    foreach (var files in Directory.GetFiles(directory))
                     {
-                        File.Copy(item, filenameInBackup, true);
-                        Console.WriteLine("Replaced " + File.GetLastWriteTime(item) + "|" + File.GetLastWriteTime(filenameInBackup));
+                        string fileInComputer = files.Replace($@"{letter}:", "C:");
+                        if (!File.Exists(fileInComputer))
+                        {
+                            Console.WriteLine(fileInComputer);
+                        }
                     }
                 }
             }
